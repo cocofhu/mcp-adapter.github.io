@@ -882,516 +882,770 @@
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <i class="fas fa-cube"></i>
-                <span>MCP Adapter</span>
+<!-- 导航栏 -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <i class="fas fa-cube"></i>
+            <span>MCP Adapter</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#features" data-i18n="navFeatures">特性</a></li>
+            <li><a href="#workflow" data-i18n="navWorkflow">工作流程</a></li>
+            <li><a href="#tech" data-i18n="navTech">技术栈</a></li>
+            <li><a href="#use-cases" data-i18n="navUseCases">使用场景</a></li>
+        </ul>
+        <div class="nav-cta">
+            <button class="btn btn-outline" id="langToggle" aria-label="切换语言" style="padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span id="langText">EN</span>
+            </button>
+            <a href="https://github.com/cocofhu/mcp-adapter" class="btn btn-primary" data-i18n="navStart">开始使用</a>
+        </div>
+    </div>
+</nav>
+
+<!-- 主题切换器 -->
+<div class="theme-switcher">
+    <button class="theme-toggle-btn" id="themeToggle" aria-label="切换主题">
+        <i class="fas fa-palette"></i>
+    </button>
+    <div class="theme-options" id="themeOptions">
+        <div class="theme-option active" data-theme="purple">
+            <div class="theme-color purple"></div>
+            <span class="theme-name" data-i18n="themePurple">紫色梦幻</span>
+            <i class="fas fa-check theme-check"></i>
+        </div>
+        <div class="theme-option" data-theme="blue">
+            <div class="theme-color blue"></div>
+            <span class="theme-name" data-i18n="themeBlue">海洋蓝调</span>
+            <i class="fas fa-check theme-check"></i>
+        </div>
+        <div class="theme-option" data-theme="green">
+            <div class="theme-color green"></div>
+            <span class="theme-name" data-i18n="themeGreen">自然绿意</span>
+            <i class="fas fa-check theme-check"></i>
+        </div>
+        <div class="theme-option" data-theme="orange">
+            <div class="theme-color orange"></div>
+            <span class="theme-name" data-i18n="themeOrange">活力橙红</span>
+            <i class="fas fa-check theme-check"></i>
+        </div>
+        <div class="theme-option" data-theme="pink">
+            <div class="theme-color pink"></div>
+            <span class="theme-name" data-i18n="themePink">浪漫粉紫</span>
+            <i class="fas fa-check theme-check"></i>
+        </div>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1 data-i18n="heroTitle">让AI无缝对接任意HTTP接口</h1>
+        <p data-i18n="heroSubtitle">MCP Adapter - 将HTTP API转换为MCP协议的强大适配器，让大模型轻松调用任何外部服务</p>
+        <div class="hero-buttons">
+            <a href="https://github.com/cocofhu/mcp-adapter" class="btn btn-white">
+                <i class="fas fa-rocket"></i> <span data-i18n="heroStart">立即开始</span>
             </a>
-            <ul class="nav-links">
-                <li><a href="#features">特性</a></li>
-                <li><a href="#workflow">工作流程</a></li>
-                <li><a href="#tech">技术栈</a></li>
-                <li><a href="#use-cases">使用场景</a></li>
-            </ul>
-            <div class="nav-cta">
-                <a href="https://github.com/cocofhu/mcp-adapter" class="btn btn-primary">开始使用</a>
+            <a href="https://github.com/cocofhu/mcp-adapter" class="btn btn-outline">
+                <i class="fab fa-github"></i> <span data-i18n="heroGithub">GitHub</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- SVG动画演示 -->
+<section class="demo-section">
+    <div class="demo-container">
+        <div class="section-header animate-on-scroll">
+            <h2 data-i18n="demoTitle">工作原理</h2>
+            <p data-i18n="demoSubtitle">三步实现HTTP接口到MCP协议的无缝转换</p>
+        </div>
+
+        <svg class="demo-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+            <!-- 定义渐变和滤镜 -->
+            <defs>
+                <linearGradient id="boxGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="boxGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#818cf8;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="boxGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#34d399;stop-opacity:1" />
+                </linearGradient>
+                <filter id="shadow">
+                    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.2"/>
+                </filter>
+                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <polygon points="0 0, 10 3, 0 6" fill="#6366f1" />
+                </marker>
+            </defs>
+
+            <!-- 步骤1: HTTP接口 -->
+            <g class="flow-box slide-in-1">
+                <rect x="50" y="150" width="200" height="200" rx="15" fill="url(#boxGradient1)" filter="url(#shadow)"/>
+                <text x="150" y="190" text-anchor="middle" fill="white" font-size="20" font-weight="bold">HTTP 接口</text>
+
+                <!-- Font Awesome 图标 -->
+                <foreignObject x="110" y="210" width="80" height="80">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-globe" style="font-size: 40px; color: white;"></i>
+                        </div>
+                    </div>
+                </foreignObject>
+
+                <text x="150" y="310" text-anchor="middle" fill="white" font-size="14">GET /api/users</text>
+                <text x="150" y="330" text-anchor="middle" fill="white" font-size="14">POST /api/data</text>
+            </g>
+
+            <!-- 箭头1 -->
+            <g class="slide-in-1">
+                <path d="M 260 250 L 340 250" stroke="#6366f1" stroke-width="3" fill="none" marker-end="url(#arrowhead)" class="data-flow"/>
+                <text x="300" y="240" text-anchor="middle" fill="#6366f1" font-size="14" font-weight="bold">配置</text>
+            </g>
+
+            <!-- 步骤2: MCP Adapter -->
+            <g class="flow-box slide-in-2">
+                <rect x="350" y="100" width="300" height="300" rx="15" fill="url(#boxGradient2)" filter="url(#shadow)"/>
+                <text x="500" y="140" text-anchor="middle" fill="white" font-size="22" font-weight="bold">MCP Adapter</text>
+
+                <!-- Font Awesome 齿轮图标 -->
+                <foreignObject x="455" y="160" width="90" height="90">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; position: relative;">
+                            <i class="fas fa-cogs" style="font-size: 50px; color: white; animation: spin 8s linear infinite;"></i>
+                        </div>
+                    </div>
+                </foreignObject>
+
+                <!-- 功能列表 -->
+                <g transform="translate(370, 260)">
+                    <rect x="0" y="0" width="260" height="35" rx="5" fill="rgba(255,255,255,0.15)"/>
+                    <text x="10" y="23" fill="white" font-size="14">✓ 协议转换</text>
+                </g>
+                <g transform="translate(370, 305)">
+                    <rect x="0" y="0" width="260" height="35" rx="5" fill="rgba(255,255,255,0.15)"/>
+                    <text x="10" y="23" fill="white" font-size="14">✓ 参数验证</text>
+                </g>
+                <g transform="translate(370, 350)">
+                    <rect x="0" y="0" width="260" height="35" rx="5" fill="rgba(255,255,255,0.15)"/>
+                    <text x="10" y="23" fill="white" font-size="14">✓ 类型映射</text>
+                </g>
+            </g>
+
+            <!-- 箭头2 -->
+            <g class="slide-in-2">
+                <path d="M 660 250 L 740 250" stroke="#10b981" stroke-width="3" fill="none" marker-end="url(#arrowhead)" class="data-flow"/>
+                <text x="700" y="240" text-anchor="middle" fill="#10b981" font-size="14" font-weight="bold">暴露</text>
+            </g>
+
+            <!-- 步骤3: AI调用 -->
+            <g class="flow-box slide-in-3">
+                <rect x="750" y="150" width="200" height="200" rx="15" fill="url(#boxGradient3)" filter="url(#shadow)"/>
+                <text x="850" y="190" text-anchor="middle" fill="white" font-size="20" font-weight="bold">AI 模型</text>
+
+                <!-- Font Awesome AI图标 -->
+                <foreignObject x="810" y="210" width="80" height="80">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; position: relative;">
+                            <i class="fas fa-brain" style="font-size: 40px; color: white;"></i>
+                            <!-- 脉冲效果 -->
+                            <div style="position: absolute; width: 70px; height: 70px; border-radius: 50%; border: 2px solid white; opacity: 0.3; animation: pulse 2s infinite;"></div>
+                        </div>
+                    </div>
+                </foreignObject>
+
+                <text x="850" y="310" text-anchor="middle" fill="white" font-size="14">MCP 协议</text>
+                <text x="850" y="330" text-anchor="middle" fill="white" font-size="14">自动调用</text>
+            </g>
+
+            <!-- 数据流动效果 -->
+            <g class="pulse">
+                <circle cx="150" cy="250" r="8" fill="#f59e0b" opacity="0.8"/>
+                <animateMotion dur="6s" repeatCount="indefinite" path="M 0 0 L 590 0 L 590 0">
+                    <mpath href="#dataPath"/>
+                </animateMotion>
+            </g>
+            <path id="dataPath" d="M 150 250 L 500 250 L 850 250" fill="none" stroke="none"/>
+
+            <!-- 底部说明 -->
+            <text x="500" y="460" text-anchor="middle" fill="#6b7280" font-size="16" font-weight="500" data-i18n="demoBottomText">
+                一次配置，永久使用 - 让AI轻松调用任何HTTP接口
+            </text>
+        </svg>
+    </div>
+</section>
+
+<!-- 特性展示 -->
+<section class="features" id="features">
+    <div class="section-header animate-on-scroll">
+        <h2 data-i18n="featuresTitle">核心特性</h2>
+        <p data-i18n="featuresSubtitle">强大的功能，简单的使用，为AI集成而生</p>
+    </div>
+    <div class="features-grid">
+        <div class="feature-card animate-on-scroll">
+            <div class="feature-icon">
+                <i class="fas fa-exchange-alt"></i>
+            </div>
+            <h3 data-i18n="feature1Title">协议转换</h3>
+            <p data-i18n="feature1Desc">自动将HTTP接口转换为MCP协议，让大模型能够理解和调用任何HTTP API，无需手动编写适配代码。</p>
+        </div>
+        <div class="feature-card animate-on-scroll">
+            <div class="feature-icon">
+                <i class="fas fa-shapes"></i>
+            </div>
+            <h3 data-i18n="feature2Title">自定义类型</h3>
+            <p data-i18n="feature2Desc">支持定义复杂的数据结构，包括嵌套类型和数组类型，确保大模型能正确理解参数格式。</p>
+        </div>
+        <div class="feature-card animate-on-scroll">
+            <div class="feature-icon">
+                <i class="fas fa-plug"></i>
+            </div>
+            <h3 data-i18n="feature3Title">接口管理</h3>
+            <p data-i18n="feature3Desc">可视化管理HTTP接口定义，支持完整的RESTful接口配置，包括路径参数、查询参数、请求头等。</p>
+        </div>
+        <div class="feature-card animate-on-scroll">
+            <div class="feature-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 data-i18n="feature4Title">参数验证</h3>
+            <p data-i18n="feature4Desc">自动验证必填参数和数据类型，确保请求的正确性，减少错误和调试时间。</p>
+        </div>
+        <div class="feature-card animate-on-scroll">
+            <div class="feature-icon">
+                <i class="fas fa-layer-group"></i>
+            </div>
+            <h3 data-i18n="feature5Title">多应用支持</h3>
+            <p data-i18n="feature5Desc">支持管理多个独立的应用，每个应用有独立的接口和类型定义，实现完美的逻辑隔离。</p>
+        </div>
+        <div class="feature-card animate-on-scroll">
+            <div class="feature-icon">
+                <i class="fas fa-bolt"></i>
+            </div>
+            <h3 data-i18n="feature6Title">高性能</h3>
+            <p data-i18n="feature6Desc">基于Go语言开发，性能卓越，支持高并发场景，轻松应对大规模AI应用需求。</p>
+        </div>
+    </div>
+</section>
+
+<!-- 工作流程 -->
+<section class="workflow" id="workflow">
+    <div class="section-header animate-on-scroll">
+        <h2 data-i18n="workflowTitle">工作流程</h2>
+        <p data-i18n="workflowSubtitle">三步即可让AI调用你的HTTP接口</p>
+    </div>
+    <div class="workflow-steps">
+        <div class="workflow-step animate-on-scroll">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h3 data-i18n="step1Title">创建应用</h3>
+                <p data-i18n="step1Desc">首先创建一个应用容器，设置应用名称和访问路径。应用通过 <code>path</code> 字段对外暴露MCP服务，例如 <code>path='myapp'</code> 时，可通过 <code>/sse/myapp</code> 访问。</p>
             </div>
         </div>
-    </nav>
-
-    <!-- 主题切换器 -->
-    <div class="theme-switcher">
-        <button class="theme-toggle-btn" id="themeToggle" aria-label="切换主题">
-            <i class="fas fa-palette"></i>
-        </button>
-        <div class="theme-options" id="themeOptions">
-            <div class="theme-option active" data-theme="purple">
-                <div class="theme-color purple"></div>
-                <span class="theme-name">紫色梦幻</span>
-                <i class="fas fa-check theme-check"></i>
+        <div class="workflow-step animate-on-scroll">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h3 data-i18n="step2Title">定义接口</h3>
+                <p data-i18n="step2Desc">配置HTTP接口的URL、方法、参数等信息。支持 <code>GET</code>、<code>POST</code>、<code>PUT</code>、<code>DELETE</code> 等所有HTTP方法，以及路径参数、查询参数、请求头、请求体等完整配置。</p>
             </div>
-            <div class="theme-option" data-theme="blue">
-                <div class="theme-color blue"></div>
-                <span class="theme-name">海洋蓝调</span>
-                <i class="fas fa-check theme-check"></i>
-            </div>
-            <div class="theme-option" data-theme="green">
-                <div class="theme-color green"></div>
-                <span class="theme-name">自然绿意</span>
-                <i class="fas fa-check theme-check"></i>
-            </div>
-            <div class="theme-option" data-theme="orange">
-                <div class="theme-color orange"></div>
-                <span class="theme-name">活力橙红</span>
-                <i class="fas fa-check theme-check"></i>
-            </div>
-            <div class="theme-option" data-theme="pink">
-                <div class="theme-color pink"></div>
-                <span class="theme-name">浪漫粉紫</span>
-                <i class="fas fa-check theme-check"></i>
+        </div>
+        <div class="workflow-step animate-on-scroll">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h3 data-i18n="step3Title">AI调用</h3>
+                <p data-i18n="step3Desc">大模型通过MCP协议自动发现和调用你的接口。系统自动处理协议转换、参数验证、类型检查等复杂逻辑，AI只需按照MCP规范调用即可。</p>
             </div>
         </div>
     </div>
+</section>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>让AI无缝对接任意HTTP接口</h1>
-            <p>MCP Adapter - 将HTTP API转换为MCP协议的强大适配器，让大模型轻松调用任何外部服务</p>
-            <div class="hero-buttons">
-                <a href="https://github.com/cocofhu/mcp-adapter" class="btn btn-white">
-                    <i class="fas fa-rocket"></i> 立即开始
-                </a>
-                <a href="https://github.com/cocofhu/mcp-adapter" class="btn btn-outline">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
-            </div>
+<!-- 技术栈 -->
+<section class="tech-stack" id="tech">
+    <div class="section-header animate-on-scroll">
+        <h2 data-i18n="techTitle">技术栈</h2>
+        <p data-i18n="techSubtitle">基于现代化技术构建，稳定可靠</p>
+    </div>
+    <div class="tech-grid">
+        <div class="tech-item animate-on-scroll">
+            <i class="fab fa-golang"></i>
+            <h4>Go 1.21+</h4>
+            <p data-i18n="tech1Desc">高性能后端语言</p>
         </div>
-    </section>
+        <div class="tech-item animate-on-scroll">
+            <i class="fas fa-server"></i>
+            <h4>Gin Framework</h4>
+            <p data-i18n="tech2Desc">轻量级Web框架</p>
+        </div>
+        <div class="tech-item animate-on-scroll">
+            <i class="fas fa-database"></i>
+            <h4>GORM + SQLite</h4>
+            <p data-i18n="tech3Desc">强大的ORM和数据库</p>
+        </div>
+        <div class="tech-item animate-on-scroll">
+            <i class="fas fa-network-wired"></i>
+            <h4>MCP Protocol</h4>
+            <p data-i18n="tech4Desc">模型上下文协议</p>
+        </div>
+        <div class="tech-item animate-on-scroll">
+            <i class="fas fa-code"></i>
+            <h4>RESTful API</h4>
+            <p data-i18n="tech5Desc">标准化接口设计</p>
+        </div>
+        <div class="tech-item animate-on-scroll">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Type Safety</h4>
+            <p data-i18n="tech6Desc">完整的类型系统</p>
+        </div>
+    </div>
+</section>
 
-    <!-- SVG动画演示 -->
-    <section class="demo-section">
-        <div class="demo-container">
-            <div class="section-header animate-on-scroll">
-                <h2>工作原理</h2>
-                <p>三步实现HTTP接口到MCP协议的无缝转换</p>
-            </div>
+<!-- 使用场景 -->
+<section class="use-cases" id="use-cases">
+    <div class="section-header animate-on-scroll">
+        <h2 data-i18n="useCasesTitle">使用场景</h2>
+        <p data-i18n="useCasesSubtitle">适用于各种AI集成需求</p>
+    </div>
+    <div class="use-cases-grid">
+        <div class="use-case animate-on-scroll">
+            <h3><i class="fas fa-robot"></i> <span data-i18n="useCase1Title">AI Agent集成</span></h3>
+            <p data-i18n="useCase1Desc">让AI Agent能够调用第三方API，实现自动化任务处理、数据查询、服务调用等功能。</p>
+        </div>
+        <div class="use-case animate-on-scroll">
+            <h3><i class="fas fa-building"></i> <span data-i18n="useCase2Title">企业系统对接</span></h3>
+            <p data-i18n="useCase2Desc">将企业内部系统的HTTP接口暴露给AI，实现智能客服、智能助手等企业级AI应用。</p>
+        </div>
+        <div class="use-case animate-on-scroll">
+            <h3><i class="fas fa-project-diagram"></i> <span data-i18n="useCase3Title">微服务调用</span></h3>
+            <p data-i18n="useCase3Desc">让AI能够调用微服务架构中的各个服务，实现跨服务的智能编排和协调。</p>
+        </div>
+        <div class="use-case animate-on-scroll">
+            <h3><i class="fas fa-search"></i> <span data-i18n="useCase4Title">数据查询</span></h3>
+            <p data-i18n="useCase4Desc">通过AI自然语言查询各种数据源，自动转换为API调用并返回结构化结果。</p>
+        </div>
+        <div class="use-case animate-on-scroll">
+            <h3><i class="fas fa-cogs"></i> <span data-i18n="useCase5Title">工作流自动化</span></h3>
+            <p data-i18n="useCase5Desc">构建 AI驱动的工作流，自动调用多个API完成复杂的业务流程。</p>
+        </div>
+        <div class="use-case animate-on-scroll">
+            <h3><i class="fas fa-chart-line"></i> <span data-i18n="useCase6Title">数据分析</span></h3>
+            <p data-i18n="useCase6Desc">让AI能够调用数据分析接口，自动生成报表、图表和洞察。</p>
+        </div>
+    </div>
+</section>
+
+<!-- 统计数据 -->
+<section class="stats">
+    <div class="stats-grid">
+        <div class="stat-item animate-on-scroll">
+            <h3><i class="fas fa-infinity"></i></h3>
+            <p data-i18n="stat1Text">支持任意HTTP接口</p>
+        </div>
+        <div class="stat-item animate-on-scroll">
+            <h3>100%</h3>
+            <p data-i18n="stat2Text">开源免费</p>
+        </div>
+        <div class="stat-item animate-on-scroll">
+            <h3><i class="fas fa-bolt"></i></h3>
+            <p data-i18n="stat3Text">高性能低延迟</p>
+        </div>
+        <div class="stat-item animate-on-scroll">
+            <h3><i class="fas fa-check"></i></h3>
+            <p data-i18n="stat4Text">生产环境可用</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta">
+    <div class="animate-on-scroll">
+        <h2 data-i18n="ctaTitle">准备好开始了吗？</h2>
+        <p data-i18n="ctaSubtitle">立即使用MCP Adapter，让你的AI应用能够调用任何HTTP接口</p>
+        <div class="cta-buttons">
+            <a href="https://github.com/cocofhu/mcp-adapter" class="btn btn-primary">
+                <i class="fas fa-rocket"></i> <span data-i18n="ctaStart">开始使用</span>
+            </a>
+            <a href="https://github.com/cocofhu/mcp-adapter" class="btn btn-outline">
+                <i class="fab fa-github"></i> <span data-i18n="ctaSource">查看源码</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4><i class="fas fa-cube"></i> MCP Adapter</h4>
+            <p data-i18n="footerDesc">让AI无缝对接任意HTTP接口的强大适配器</p>
+        </div>
+        <div class="footer-section">
+            <h4 data-i18n="footerQuickLinks">快速链接</h4>
+            <a href="https://github.com/cocofhu/mcp-adapter" data-i18n="footerConsole">管理控制台</a>
+            <a href="#features" data-i18n="footerFeatures">核心特性</a>
+            <a href="#workflow" data-i18n="footerWorkflow">工作流程</a>
+            <a href="#use-cases" data-i18n="footerUseCases">使用场景</a>
+        </div>
+        <div class="footer-section">
+            <h4 data-i18n="footerResources">资源</h4>
+            <a href="https://github.com/cocofhu/mcp-adapter" data-i18n="footerGithub">GitHub</a>
+            <a href="https://github.com/cocofhu/mcp-adapter/issues" data-i18n="footerIssues">问题反馈</a>
+            <a href="#" data-i18n="footerApiDocs">API文档</a>
+            <a href="#" data-i18n="footerGuide">使用指南</a>
+        </div>
+        <div class="footer-section">
+            <h4 data-i18n="footerContact">联系我们</h4>
+            <p><i class="fas fa-envelope"></i> cocofhu@outlook.com</p>
+            <p><i class="fab fa-github"></i> GitHub Issues</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p data-i18n="footerCopyright">&copy; 2026 MCP Adapter. All rights reserved. | MIT License</p>
+    </div>
+</footer>
+
+<script>
+    // 语言切换功能
+    const translations = {
+        zh: {
+            // 导航栏
+            navFeatures: '特性',
+            navWorkflow: '工作流程',
+            navTech: '技术栈',
+            navUseCases: '使用场景',
+            navStart: '开始使用',
+            langText: 'EN',
             
-            <svg class="demo-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
-                <!-- 定义渐变和滤镜 -->
-                <defs>
-                    <linearGradient id="boxGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
-                    </linearGradient>
-                    <linearGradient id="boxGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#818cf8;stop-opacity:1" />
-                    </linearGradient>
-                    <linearGradient id="boxGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#34d399;stop-opacity:1" />
-                    </linearGradient>
-                    <filter id="shadow">
-                        <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.2"/>
-                    </filter>
-                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                        <polygon points="0 0, 10 3, 0 6" fill="#6366f1" />
-                    </marker>
-                </defs>
+            // Hero区域
+            heroTitle: '让AI无缝对接任意HTTP接口',
+            heroSubtitle: 'MCP Adapter - 将HTTP API转换为MCP协议的强大适配器，让大模型轻松调用任何外部服务',
+            heroStart: '立即开始',
+            heroGithub: 'GitHub',
+            
+            // 工作原理
+            demoTitle: '工作原理',
+            demoSubtitle: '三步实现HTTP接口到MCP协议的无缝转换',
+            demoBottomText: '一次配置，永久使用 - 让AI轻松调用任何HTTP接口',
+            
+            // 核心特性
+            featuresTitle: '核心特性',
+            featuresSubtitle: '强大的功能，简单的使用，为AI集成而生',
+            feature1Title: '协议转换',
+            feature1Desc: '自动将HTTP接口转换为MCP协议，让大模型能够理解和调用任何HTTP API，无需手动编写适配代码。',
+            feature2Title: '自定义类型',
+            feature2Desc: '支持定义复杂的数据结构，包括嵌套类型和数组类型，确保大模型能正确理解参数格式。',
+            feature3Title: '接口管理',
+            feature3Desc: '可视化管理HTTP接口定义，支持完整的RESTful接口配置，包括路径参数、查询参数、请求头等。',
+            feature4Title: '参数验证',
+            feature4Desc: '自动验证必填参数和数据类型，确保请求的正确性，减少错误和调试时间。',
+            feature5Title: '多应用支持',
+            feature5Desc: '支持管理多个独立的应用，每个应用有独立的接口和类型定义，实现完美的逻辑隔离。',
+            feature6Title: '高性能',
+            feature6Desc: '基于Go语言开发，性能卓越，支持高并发场景，轻松应对大规模AI应用需求。',
+            
+            // 工作流程
+            workflowTitle: '工作流程',
+            workflowSubtitle: '三步即可让AI调用你的HTTP接口',
+            step1Title: '创建应用',
+            step1Desc: '首先创建一个应用容器，设置应用名称和访问路径。应用通过 path 字段对外暴露MCP服务，例如 path=\'myapp\' 时，可通过 /sse/myapp 访问。',
+            step2Title: '定义接口',
+            step2Desc: '配置HTTP接口的URL、方法、参数等信息。支持 GET、POST、PUT、DELETE 等所有HTTP方法，以及路径参数、查询参数、请求头、请求体等完整配置。',
+            step3Title: 'AI调用',
+            step3Desc: '大模型通过MCP协议自动发现和调用你的接口。系统自动处理协议转换、参数验证、类型检查等复杂逻辑，AI只需按照MCP规范调用即可。',
+            
+            // 技术栈
+            techTitle: '技术栈',
+            techSubtitle: '基于现代化技术构建，稳定可靠',
+            tech1Desc: '高性能后端语言',
+            tech2Desc: '轻量级Web框架',
+            tech3Desc: '强大的ORM和数据库',
+            tech4Desc: '模型上下文协议',
+            tech5Desc: '标准化接口设计',
+            tech6Desc: '完整的类型系统',
+            
+            // 使用场景
+            useCasesTitle: '使用场景',
+            useCasesSubtitle: '适用于各种AI集成需求',
+            useCase1Title: 'AI Agent集成',
+            useCase1Desc: '让AI Agent能够调用第三方API，实现自动化任务处理、数据查询、服务调用等功能。',
+            useCase2Title: '企业系统对接',
+            useCase2Desc: '将企业内部系统的HTTP接口暴露给AI，实现智能客服、智能助手等企业级AI应用。',
+            useCase3Title: '微服务调用',
+            useCase3Desc: '让AI能够调用微服务架构中的各个服务，实现跨服务的智能编排和协调。',
+            useCase4Title: '数据查询',
+            useCase4Desc: '通过AI自然语言查询各种数据源，自动转换为API调用并返回结构化结果。',
+            useCase5Title: '工作流自动化',
+            useCase5Desc: '构建AI驱动的工作流，自动调用多个API完成复杂的业务流程。',
+            useCase6Title: '数据分析',
+            useCase6Desc: '让AI能够调用数据分析接口，自动生成报表、图表和洞察。',
+            
+            // 统计数据
+            stat1Text: '支持任意HTTP接口',
+            stat2Text: '开源免费',
+            stat3Text: '高性能低延迟',
+            stat4Text: '生产环境可用',
+            
+            // CTA
+            ctaTitle: '准备好开始了吗？',
+            ctaSubtitle: '立即使用MCP Adapter，让你的AI应用能够调用任何HTTP接口',
+            ctaStart: '开始使用',
+            ctaSource: '查看源码',
+            
+            // Footer
+            footerDesc: '让AI无缝对接任意HTTP接口的强大适配器',
+            footerQuickLinks: '快速链接',
+            footerConsole: '管理控制台',
+            footerFeatures: '核心特性',
+            footerWorkflow: '工作流程',
+            footerUseCases: '使用场景',
+            footerResources: '资源',
+            footerGithub: 'GitHub',
+            footerIssues: '问题反馈',
+            footerApiDocs: 'API文档',
+            footerGuide: '使用指南',
+            footerContact: '联系我们',
+            footerCopyright: '© 2026 MCP Adapter. All rights reserved. | MIT License',
+            
+            // 主题选项
+            themePurple: '紫色梦幻',
+            themeBlue: '海洋蓝调',
+            themeGreen: '自然绿意',
+            themeOrange: '活力橙红',
+            themePink: '浪漫粉紫'
+        },
+        en: {
+            // Navigation
+            navFeatures: 'Features',
+            navWorkflow: 'Workflow',
+            navTech: 'Tech Stack',
+            navUseCases: 'Use Cases',
+            navStart: 'Get Started',
+            langText: '中文',
+            
+            // Hero
+            heroTitle: 'Seamlessly Connect AI to Any HTTP API',
+            heroSubtitle: 'MCP Adapter - A powerful adapter that converts HTTP APIs to MCP protocol, enabling AI models to easily call any external service',
+            heroStart: 'Get Started',
+            heroGithub: 'GitHub',
+            
+            // Demo
+            demoTitle: 'How It Works',
+            demoSubtitle: 'Three steps to seamlessly convert HTTP APIs to MCP protocol',
+            demoBottomText: 'Configure once, use forever - Let AI easily call any HTTP API',
+            
+            // Features
+            featuresTitle: 'Core Features',
+            featuresSubtitle: 'Powerful features, simple to use, built for AI integration',
+            feature1Title: 'Protocol Conversion',
+            feature1Desc: 'Automatically converts HTTP APIs to MCP protocol, enabling AI models to understand and call any HTTP API without manual adapter code.',
+            feature2Title: 'Custom Types',
+            feature2Desc: 'Support for defining complex data structures, including nested types and array types, ensuring AI models correctly understand parameter formats.',
+            feature3Title: 'Interface Management',
+            feature3Desc: 'Visual management of HTTP interface definitions, supporting complete RESTful interface configuration including path parameters, query parameters, headers, etc.',
+            feature4Title: 'Parameter Validation',
+            feature4Desc: 'Automatic validation of required parameters and data types, ensuring request correctness and reducing errors and debugging time.',
+            feature5Title: 'Multi-Application Support',
+            feature5Desc: 'Support for managing multiple independent applications, each with its own interfaces and type definitions, achieving perfect logical isolation.',
+            feature6Title: 'High Performance',
+            feature6Desc: 'Built with Go language, excellent performance, supporting high-concurrency scenarios, easily handling large-scale AI application needs.',
+            
+            // Workflow
+            workflowTitle: 'Workflow',
+            workflowSubtitle: 'Three steps to let AI call your HTTP APIs',
+            step1Title: 'Create Application',
+            step1Desc: 'First create an application container, set the application name and access path. Applications expose MCP services through the path field, for example, when path=\'myapp\', it can be accessed via /sse/myapp.',
+            step2Title: 'Define Interface',
+            step2Desc: 'Configure HTTP interface URL, method, parameters, etc. Supports all HTTP methods like GET, POST, PUT, DELETE, as well as complete configuration of path parameters, query parameters, headers, request body, etc.',
+            step3Title: 'AI Invocation',
+            step3Desc: 'AI models automatically discover and call your interfaces through MCP protocol. The system automatically handles protocol conversion, parameter validation, type checking and other complex logic, AI only needs to call according to MCP specifications.',
+            
+            // Tech Stack
+            techTitle: 'Tech Stack',
+            techSubtitle: 'Built with modern technologies, stable and reliable',
+            tech1Desc: 'High-performance backend language',
+            tech2Desc: 'Lightweight web framework',
+            tech3Desc: 'Powerful ORM and database',
+            tech4Desc: 'Model Context Protocol',
+            tech5Desc: 'Standardized API design',
+            tech6Desc: 'Complete type system',
+            
+            // Use Cases
+            useCasesTitle: 'Use Cases',
+            useCasesSubtitle: 'Suitable for various AI integration needs',
+            useCase1Title: 'AI Agent Integration',
+            useCase1Desc: 'Enable AI Agents to call third-party APIs, implementing automated task processing, data queries, service calls, and more.',
+            useCase2Title: 'Enterprise System Integration',
+            useCase2Desc: 'Expose enterprise internal system HTTP APIs to AI, implementing enterprise-level AI applications like intelligent customer service and smart assistants.',
+            useCase3Title: 'Microservice Invocation',
+            useCase3Desc: 'Enable AI to call various services in microservice architecture, implementing intelligent orchestration and coordination across services.',
+            useCase4Title: 'Data Query',
+            useCase4Desc: 'Query various data sources through AI natural language, automatically converting to API calls and returning structured results.',
+            useCase5Title: 'Workflow Automation',
+            useCase5Desc: 'Build AI-driven workflows, automatically calling multiple APIs to complete complex business processes.',
+            useCase6Title: 'Data Analysis',
+            useCase6Desc: 'Enable AI to call data analysis interfaces, automatically generating reports, charts, and insights.',
+            
+            // Stats
+            stat1Text: 'Support Any HTTP API',
+            stat2Text: 'Open Source & Free',
+            stat3Text: 'High Performance & Low Latency',
+            stat4Text: 'Production Ready',
+            
+            // CTA
+            ctaTitle: 'Ready to Get Started?',
+            ctaSubtitle: 'Start using MCP Adapter now and enable your AI applications to call any HTTP API',
+            ctaStart: 'Get Started',
+            ctaSource: 'View Source',
+            
+            // Footer
+            footerDesc: 'A powerful adapter for seamlessly connecting AI to any HTTP API',
+            footerQuickLinks: 'Quick Links',
+            footerConsole: 'Admin Console',
+            footerFeatures: 'Features',
+            footerWorkflow: 'Workflow',
+            footerUseCases: 'Use Cases',
+            footerResources: 'Resources',
+            footerGithub: 'GitHub',
+            footerIssues: 'Issues',
+            footerApiDocs: 'API Docs',
+            footerGuide: 'User Guide',
+            footerContact: 'Contact Us',
+            footerCopyright: '© 2026 MCP Adapter. All rights reserved. | MIT License',
+            
+            // Theme Options
+            themePurple: 'Purple Dream',
+            themeBlue: 'Ocean Blue',
+            themeGreen: 'Nature Green',
+            themeOrange: 'Vibrant Orange',
+            themePink: 'Romantic Pink'
+        }
+    };
 
-                <!-- 步骤1: HTTP接口 -->
-                <g class="flow-box slide-in-1">
-                    <rect x="50" y="150" width="200" height="200" rx="15" fill="url(#boxGradient1)" filter="url(#shadow)"/>
-                    <text x="150" y="190" text-anchor="middle" fill="white" font-size="20" font-weight="bold">HTTP 接口</text>
-                    
-                    <!-- Font Awesome 图标 -->
-                    <foreignObject x="110" y="210" width="80" height="80">
-                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
-                            <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-globe" style="font-size: 40px; color: white;"></i>
-                            </div>
-                        </div>
-                    </foreignObject>
-                    
-                    <text x="150" y="310" text-anchor="middle" fill="white" font-size="14">GET /api/users</text>
-                    <text x="150" y="330" text-anchor="middle" fill="white" font-size="14">POST /api/data</text>
-                </g>
-
-                <!-- 箭头1 -->
-                <g class="slide-in-1">
-                    <path d="M 260 250 L 340 250" stroke="#6366f1" stroke-width="3" fill="none" marker-end="url(#arrowhead)" class="data-flow"/>
-                    <text x="300" y="240" text-anchor="middle" fill="#6366f1" font-size="14" font-weight="bold">配置</text>
-                </g>
-
-                <!-- 步骤2: MCP Adapter -->
-                <g class="flow-box slide-in-2">
-                    <rect x="350" y="100" width="300" height="300" rx="15" fill="url(#boxGradient2)" filter="url(#shadow)"/>
-                    <text x="500" y="140" text-anchor="middle" fill="white" font-size="22" font-weight="bold">MCP Adapter</text>
-                    
-                    <!-- Font Awesome 齿轮图标 -->
-                    <foreignObject x="455" y="160" width="90" height="90">
-                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
-                            <div style="width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; position: relative;">
-                                <i class="fas fa-cogs" style="font-size: 50px; color: white; animation: spin 8s linear infinite;"></i>
-                            </div>
-                        </div>
-                    </foreignObject>
-                    
-                    <!-- 功能列表 -->
-                    <g transform="translate(370, 260)">
-                        <rect x="0" y="0" width="260" height="35" rx="5" fill="rgba(255,255,255,0.15)"/>
-                        <text x="10" y="23" fill="white" font-size="14">✓ 协议转换</text>
-                    </g>
-                    <g transform="translate(370, 305)">
-                        <rect x="0" y="0" width="260" height="35" rx="5" fill="rgba(255,255,255,0.15)"/>
-                        <text x="10" y="23" fill="white" font-size="14">✓ 参数验证</text>
-                    </g>
-                    <g transform="translate(370, 350)">
-                        <rect x="0" y="0" width="260" height="35" rx="5" fill="rgba(255,255,255,0.15)"/>
-                        <text x="10" y="23" fill="white" font-size="14">✓ 类型映射</text>
-                    </g>
-                </g>
-
-                <!-- 箭头2 -->
-                <g class="slide-in-2">
-                    <path d="M 660 250 L 740 250" stroke="#10b981" stroke-width="3" fill="none" marker-end="url(#arrowhead)" class="data-flow"/>
-                    <text x="700" y="240" text-anchor="middle" fill="#10b981" font-size="14" font-weight="bold">暴露</text>
-                </g>
-
-                <!-- 步骤3: AI调用 -->
-                <g class="flow-box slide-in-3">
-                    <rect x="750" y="150" width="200" height="200" rx="15" fill="url(#boxGradient3)" filter="url(#shadow)"/>
-                    <text x="850" y="190" text-anchor="middle" fill="white" font-size="20" font-weight="bold">AI 模型</text>
-                    
-                    <!-- Font Awesome AI图标 -->
-                    <foreignObject x="810" y="210" width="80" height="80">
-                        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
-                            <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; position: relative;">
-                                <i class="fas fa-brain" style="font-size: 40px; color: white;"></i>
-                                <!-- 脉冲效果 -->
-                                <div style="position: absolute; width: 70px; height: 70px; border-radius: 50%; border: 2px solid white; opacity: 0.3; animation: pulse 2s infinite;"></div>
-                            </div>
-                        </div>
-                    </foreignObject>
-                    
-                    <text x="850" y="310" text-anchor="middle" fill="white" font-size="14">MCP 协议</text>
-                    <text x="850" y="330" text-anchor="middle" fill="white" font-size="14">自动调用</text>
-                </g>
-
-                <!-- 数据流动效果 -->
-                <g class="pulse">
-                    <circle cx="150" cy="250" r="8" fill="#f59e0b" opacity="0.8"/>
-                    <animateMotion dur="6s" repeatCount="indefinite" path="M 0 0 L 590 0 L 590 0">
-                        <mpath href="#dataPath"/>
-                    </animateMotion>
-                </g>
-                <path id="dataPath" d="M 150 250 L 500 250 L 850 250" fill="none" stroke="none"/>
-
-                <!-- 底部说明 -->
-                <text x="500" y="460" text-anchor="middle" fill="#6b7280" font-size="16" font-weight="500">
-                    一次配置，永久使用 - 让AI轻松调用任何HTTP接口
-                </text>
-            </svg>
-        </div>
-    </section>
-
-    <!-- 特性展示 -->
-    <section class="features" id="features">
-        <div class="section-header animate-on-scroll">
-            <h2>核心特性</h2>
-            <p>强大的功能，简单的使用，为AI集成而生</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card animate-on-scroll">
-                <div class="feature-icon">
-                    <i class="fas fa-exchange-alt"></i>
-                </div>
-                <h3>协议转换</h3>
-                <p>自动将HTTP接口转换为MCP协议，让大模型能够理解和调用任何HTTP API，无需手动编写适配代码。</p>
-            </div>
-            <div class="feature-card animate-on-scroll">
-                <div class="feature-icon">
-                    <i class="fas fa-shapes"></i>
-                </div>
-                <h3>自定义类型</h3>
-                <p>支持定义复杂的数据结构，包括嵌套类型和数组类型，确保大模型能正确理解参数格式。</p>
-            </div>
-            <div class="feature-card animate-on-scroll">
-                <div class="feature-icon">
-                    <i class="fas fa-plug"></i>
-                </div>
-                <h3>接口管理</h3>
-                <p>可视化管理HTTP接口定义，支持完整的RESTful接口配置，包括路径参数、查询参数、请求头等。</p>
-            </div>
-            <div class="feature-card animate-on-scroll">
-                <div class="feature-icon">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <h3>参数验证</h3>
-                <p>自动验证必填参数和数据类型，确保请求的正确性，减少错误和调试时间。</p>
-            </div>
-            <div class="feature-card animate-on-scroll">
-                <div class="feature-icon">
-                    <i class="fas fa-layer-group"></i>
-                </div>
-                <h3>多应用支持</h3>
-                <p>支持管理多个独立的应用，每个应用有独立的接口和类型定义，实现完美的逻辑隔离。</p>
-            </div>
-            <div class="feature-card animate-on-scroll">
-                <div class="feature-icon">
-                    <i class="fas fa-bolt"></i>
-                </div>
-                <h3>高性能</h3>
-                <p>基于Go语言开发，性能卓越，支持高并发场景，轻松应对大规模AI应用需求。</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 工作流程 -->
-    <section class="workflow" id="workflow">
-        <div class="section-header animate-on-scroll">
-            <h2>工作流程</h2>
-            <p>三步即可让AI调用你的HTTP接口</p>
-        </div>
-        <div class="workflow-steps">
-            <div class="workflow-step animate-on-scroll">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3>创建应用</h3>
-                    <p>首先创建一个应用容器，设置应用名称和访问路径。应用通过 <code>path</code> 字段对外暴露MCP服务，例如 <code>path='myapp'</code> 时，可通过 <code>/sse/myapp</code> 访问。</p>
-                </div>
-            </div>
-            <div class="workflow-step animate-on-scroll">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3>定义接口</h3>
-                    <p>配置HTTP接口的URL、方法、参数等信息。支持 <code>GET</code>、<code>POST</code>、<code>PUT</code>、<code>DELETE</code> 等所有HTTP方法，以及路径参数、查询参数、请求头、请求体等完整配置。</p>
-                </div>
-            </div>
-            <div class="workflow-step animate-on-scroll">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3>AI调用</h3>
-                    <p>大模型通过MCP协议自动发现和调用你的接口。系统自动处理协议转换、参数验证、类型检查等复杂逻辑，AI只需按照MCP规范调用即可。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 技术栈 -->
-    <section class="tech-stack" id="tech">
-        <div class="section-header animate-on-scroll">
-            <h2>技术栈</h2>
-            <p>基于现代化技术构建，稳定可靠</p>
-        </div>
-        <div class="tech-grid">
-            <div class="tech-item animate-on-scroll">
-                <i class="fab fa-golang"></i>
-                <h4>Go 1.21+</h4>
-                <p>高性能后端语言</p>
-            </div>
-            <div class="tech-item animate-on-scroll">
-                <i class="fas fa-server"></i>
-                <h4>Gin Framework</h4>
-                <p>轻量级Web框架</p>
-            </div>
-            <div class="tech-item animate-on-scroll">
-                <i class="fas fa-database"></i>
-                <h4>GORM + SQLite</h4>
-                <p>强大的ORM和数据库</p>
-            </div>
-            <div class="tech-item animate-on-scroll">
-                <i class="fas fa-network-wired"></i>
-                <h4>MCP Protocol</h4>
-                <p>模型上下文协议</p>
-            </div>
-            <div class="tech-item animate-on-scroll">
-                <i class="fas fa-code"></i>
-                <h4>RESTful API</h4>
-                <p>标准化接口设计</p>
-            </div>
-            <div class="tech-item animate-on-scroll">
-                <i class="fas fa-shield-alt"></i>
-                <h4>Type Safety</h4>
-                <p>完整的类型系统</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 使用场景 -->
-    <section class="use-cases" id="use-cases">
-        <div class="section-header animate-on-scroll">
-            <h2>使用场景</h2>
-            <p>适用于各种AI集成需求</p>
-        </div>
-        <div class="use-cases-grid">
-            <div class="use-case animate-on-scroll">
-                <h3><i class="fas fa-robot"></i> AI Agent集成</h3>
-                <p>让AI Agent能够调用第三方API，实现自动化任务处理、数据查询、服务调用等功能。</p>
-            </div>
-            <div class="use-case animate-on-scroll">
-                <h3><i class="fas fa-building"></i> 企业系统对接</h3>
-                <p>将企业内部系统的HTTP接口暴露给AI，实现智能客服、智能助手等企业级AI应用。</p>
-            </div>
-            <div class="use-case animate-on-scroll">
-                <h3><i class="fas fa-project-diagram"></i> 微服务调用</h3>
-                <p>让AI能够调用微服务架构中的各个服务，实现跨服务的智能编排和协调。</p>
-            </div>
-            <div class="use-case animate-on-scroll">
-                <h3><i class="fas fa-search"></i> 数据查询</h3>
-                <p>通过AI自然语言查询各种数据源，自动转换为API调用并返回结构化结果。</p>
-            </div>
-            <div class="use-case animate-on-scroll">
-                <h3><i class="fas fa-cogs"></i> 工作流自动化</h3>
-                <p>构建AI驱动的工作流，自动调用多个API完成复杂的业务流程。</p>
-            </div>
-            <div class="use-case animate-on-scroll">
-                <h3><i class="fas fa-chart-line"></i> 数据分析</h3>
-                <p>让AI能够调用数据分析接口，自动生成报表、图表和洞察。</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 统计数据 -->
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat-item animate-on-scroll">
-                <h3><i class="fas fa-infinity"></i></h3>
-                <p>支持任意HTTP接口</p>
-            </div>
-            <div class="stat-item animate-on-scroll">
-                <h3>100%</h3>
-                <p>开源免费</p>
-            </div>
-            <div class="stat-item animate-on-scroll">
-                <h3><i class="fas fa-bolt"></i></h3>
-                <p>高性能低延迟</p>
-            </div>
-            <div class="stat-item animate-on-scroll">
-                <h3><i class="fas fa-check"></i></h3>
-                <p>生产环境可用</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="animate-on-scroll">
-            <h2>准备好开始了吗？</h2>
-            <p>立即使用MCP Adapter，让你的AI应用能够调用任何HTTP接口</p>
-            <div class="cta-buttons">
-                <a href="https://github.com/cocofhu/mcp-adapter" class="btn btn-primary">
-                    <i class="fas fa-rocket"></i> 开始使用
-                </a>
-                <a href="https://github.com/cocofhu/mcp-adapter" class="btn btn-outline">
-                    <i class="fab fa-github"></i> 查看源码
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4><i class="fas fa-cube"></i> MCP Adapter</h4>
-                <p>让AI无缝对接任意HTTP接口的强大适配器</p>
-            </div>
-            <div class="footer-section">
-                <h4>快速链接</h4>
-                <a href="https://github.com/cocofhu/mcp-adapter">管理控制台</a>
-                <a href="#features">核心特性</a>
-                <a href="#workflow">工作流程</a>
-                <a href="#use-cases">使用场景</a>
-            </div>
-            <div class="footer-section">
-                <h4>资源</h4>
-                <a href="https://github.com/cocofhu/mcp-adapter">GitHub</a>
-                <a href="https://github.com/cocofhu/mcp-adapter/issues">问题反馈</a>
-                <a href="#">API文档</a>
-                <a href="#">使用指南</a>
-            </div>
-            <div class="footer-section">
-                <h4>联系我们</h4>
-                <p><i class="fas fa-envelope"></i> cocofhu@outlook.com</p>
-                <p><i class="fab fa-github"></i> GitHub Issues</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 MCP Adapter. All rights reserved. | MIT License</p>
-        </div>
-    </footer>
-
-    <script>
-        // 主题切换功能
-        const themeToggle = document.getElementById('themeToggle');
-        const themeOptions = document.getElementById('themeOptions');
-        const themeOptionElements = document.querySelectorAll('.theme-option');
-
-        // 从localStorage加载保存的主题
-        const savedTheme = localStorage.getItem('theme') || 'purple';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
-
-        // 切换主题选项显示
-        themeToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            themeOptions.classList.toggle('active');
+    // 从localStorage加载保存的语言
+    let currentLang = localStorage.getItem('language') || 'en';
+    
+    // 语言切换函数
+    function switchLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('language', lang);
+        document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+        
+        const t = translations[lang];
+        
+        // 更新所有带data-i18n属性的元素
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = t[key];
+                } else {
+                    el.textContent = t[key];
+                }
+            }
         });
+        
+        // 更新语言按钮文本
+        document.getElementById('langText').textContent = t.langText;
+    }
+    
+    // 初始化语言
+    switchLanguage(currentLang);
+    
+    // 语言切换按钮事件
+    document.getElementById('langToggle').addEventListener('click', () => {
+        switchLanguage(currentLang === 'zh' ? 'en' : 'zh');
+    });
 
-        // 点击页面其他地方关闭主题选项
-        document.addEventListener('click', (e) => {
-            if (!themeOptions.contains(e.target) && e.target !== themeToggle) {
+    // 主题切换功能
+    const themeToggle = document.getElementById('themeToggle');
+    const themeOptions = document.getElementById('themeOptions');
+    const themeOptionElements = document.querySelectorAll('.theme-option');
+
+    // 从localStorage加载保存的主题
+    const savedTheme = localStorage.getItem('theme') || 'purple';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
+
+    // 切换主题选项显示
+    themeToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        themeOptions.classList.toggle('active');
+    });
+
+    // 点击页面其他地方关闭主题选项
+    document.addEventListener('click', (e) => {
+        if (!themeOptions.contains(e.target) && e.target !== themeToggle) {
+            themeOptions.classList.remove('active');
+        }
+    });
+
+    // 主题选择
+    themeOptionElements.forEach(option => {
+        option.addEventListener('click', () => {
+            const theme = option.getAttribute('data-theme');
+
+            // 更新active状态
+            themeOptionElements.forEach(opt => opt.classList.remove('active'));
+            option.classList.add('active');
+
+            // 应用主题
+            document.documentElement.setAttribute('data-theme', theme);
+
+            // 保存到localStorage
+            localStorage.setItem('theme', theme);
+
+            // 关闭选项面板
+            setTimeout(() => {
                 themeOptions.classList.remove('active');
+            }, 300);
+        });
+    });
+
+    // 导航栏滚动效果
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // 滚动动画
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
             }
         });
+    }, observerOptions);
 
-        // 主题选择
-        themeOptionElements.forEach(option => {
-            option.addEventListener('click', () => {
-                const theme = option.getAttribute('data-theme');
-                
-                // 更新active状态
-                themeOptionElements.forEach(opt => opt.classList.remove('active'));
-                option.classList.add('active');
-                
-                // 应用主题
-                document.documentElement.setAttribute('data-theme', theme);
-                
-                // 保存到localStorage
-                localStorage.setItem('theme', theme);
-                
-                // 关闭选项面板
-                setTimeout(() => {
-                    themeOptions.classList.remove('active');
-                }, 300);
-            });
-        });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+    });
 
-        // 导航栏滚动效果
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
         });
-
-        // 滚动动画
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
