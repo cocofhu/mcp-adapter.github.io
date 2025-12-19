@@ -988,7 +988,7 @@
             <!-- 步骤1: HTTP接口 -->
             <g class="flow-box slide-in-1">
                 <rect x="50" y="150" width="200" height="200" rx="15" fill="url(#boxGradient1)" filter="url(#shadow)"/>
-                <text x="150" y="190" text-anchor="middle" fill="white" font-size="20" font-weight="bold">HTTP 接口</text>
+                <text x="150" y="190" text-anchor="middle" fill="white" font-size="20" font-weight="bold" data-i18n="svgHttpApi">HTTP 接口</text>
 
                 <!-- Font Awesome 图标 -->
                 <foreignObject x="110" y="210" width="80" height="80">
@@ -999,20 +999,20 @@
                     </div>
                 </foreignObject>
 
-                <text x="150" y="310" text-anchor="middle" fill="white" font-size="14">GET /api/users</text>
-                <text x="150" y="330" text-anchor="middle" fill="white" font-size="14">POST /api/data</text>
+                <text x="150" y="310" text-anchor="middle" fill="white" font-size="14" data-i18n="svgGetUsers">GET /api/users</text>
+                <text x="150" y="330" text-anchor="middle" fill="white" font-size="14" data-i18n="svgPostData">POST /api/data</text>
             </g>
 
             <!-- 箭头1 -->
             <g class="slide-in-1">
                 <path d="M 260 250 L 340 250" stroke="#6366f1" stroke-width="3" fill="none" marker-end="url(#arrowhead)" class="data-flow"/>
-                <text x="300" y="240" text-anchor="middle" fill="#6366f1" font-size="14" font-weight="bold">配置</text>
+                <text x="300" y="240" text-anchor="middle" fill="#6366f1" font-size="14" font-weight="bold" data-i18n="svgConfigure">配置</text>
             </g>
 
             <!-- 步骤2: MCP Adapter -->
             <g class="flow-box slide-in-2">
                 <rect x="350" y="100" width="300" height="300" rx="15" fill="url(#boxGradient2)" filter="url(#shadow)"/>
-                <text x="500" y="140" text-anchor="middle" fill="white" font-size="22" font-weight="bold">MCP Adapter</text>
+                <text x="500" y="140" text-anchor="middle" fill="white" font-size="22" font-weight="bold" data-i18n="svgMcpAdapter">MCP Adapter</text>
 
                 <!-- Font Awesome 齿轮图标 -->
                 <foreignObject x="455" y="160" width="90" height="90">
@@ -1026,28 +1026,28 @@
                 <!-- 功能列表 -->
                 <g transform="translate(370, 260)">
                     <rect x="0" y="0" width="260" height="35" rx="5" fill="rgba(255,255,255,0.15)"/>
-                    <text x="10" y="23" fill="white" font-size="14">✓ 协议转换</text>
+                    <text x="10" y="23" fill="white" font-size="14" data-i18n="svgProtocolConversion">✓ 协议转换</text>
                 </g>
                 <g transform="translate(370, 305)">
                     <rect x="0" y="0" width="260" height="35" rx="5" fill="rgba(255,255,255,0.15)"/>
-                    <text x="10" y="23" fill="white" font-size="14">✓ 参数验证</text>
+                    <text x="10" y="23" fill="white" font-size="14" data-i18n="svgParamValidation">✓ 参数验证</text>
                 </g>
                 <g transform="translate(370, 350)">
                     <rect x="0" y="0" width="260" height="35" rx="5" fill="rgba(255,255,255,0.15)"/>
-                    <text x="10" y="23" fill="white" font-size="14">✓ 类型映射</text>
+                    <text x="10" y="23" fill="white" font-size="14" data-i18n="svgTypeMapping">✓ 类型映射</text>
                 </g>
             </g>
 
             <!-- 箭头2 -->
             <g class="slide-in-2">
                 <path d="M 660 250 L 740 250" stroke="#10b981" stroke-width="3" fill="none" marker-end="url(#arrowhead)" class="data-flow"/>
-                <text x="700" y="240" text-anchor="middle" fill="#10b981" font-size="14" font-weight="bold">暴露</text>
+                <text x="700" y="240" text-anchor="middle" fill="#10b981" font-size="14" font-weight="bold" data-i18n="svgExpose">暴露</text>
             </g>
 
             <!-- 步骤3: AI调用 -->
             <g class="flow-box slide-in-3">
                 <rect x="750" y="150" width="200" height="200" rx="15" fill="url(#boxGradient3)" filter="url(#shadow)"/>
-                <text x="850" y="190" text-anchor="middle" fill="white" font-size="20" font-weight="bold">AI 模型</text>
+                <text x="850" y="190" text-anchor="middle" fill="white" font-size="20" font-weight="bold" data-i18n="svgAiModel">AI 模型</text>
 
                 <!-- Font Awesome AI图标 -->
                 <foreignObject x="810" y="210" width="80" height="80">
@@ -1060,18 +1060,11 @@
                     </div>
                 </foreignObject>
 
-                <text x="850" y="310" text-anchor="middle" fill="white" font-size="14">MCP 协议</text>
-                <text x="850" y="330" text-anchor="middle" fill="white" font-size="14">自动调用</text>
+                <text x="850" y="310" text-anchor="middle" fill="white" font-size="14" data-i18n="svgMcpProtocol">MCP 协议</text>
+                <text x="850" y="330" text-anchor="middle" fill="white" font-size="14" data-i18n="svgAutoCall">自动调用</text>
             </g>
 
-            <!-- 数据流动效果 -->
-            <g class="pulse">
-                <circle cx="150" cy="250" r="8" fill="#f59e0b" opacity="0.8"/>
-                <animateMotion dur="6s" repeatCount="indefinite" path="M 0 0 L 590 0 L 590 0">
-                    <mpath href="#dataPath"/>
-                </animateMotion>
-            </g>
-            <path id="dataPath" d="M 150 250 L 500 250 L 850 250" fill="none" stroke="none"/>
+            <!-- 数据流动效果已移除 -->
 
             <!-- 底部说明 -->
             <text x="500" y="460" text-anchor="middle" fill="#6b7280" font-size="16" font-weight="500" data-i18n="demoBottomText">
@@ -1415,7 +1408,21 @@
             themeBlue: '海洋蓝调',
             themeGreen: '自然绿意',
             themeOrange: '活力橙红',
-            themePink: '浪漫粉紫'
+            themePink: '浪漫粉紫',
+            
+            // SVG动画文本
+            svgHttpApi: 'HTTP 接口',
+            svgGetUsers: 'GET /api/users',
+            svgPostData: 'POST /api/data',
+            svgConfigure: '配置',
+            svgMcpAdapter: 'MCP Adapter',
+            svgProtocolConversion: '✓ 协议转换',
+            svgParamValidation: '✓ 参数验证',
+            svgTypeMapping: '✓ 类型映射',
+            svgExpose: '暴露',
+            svgAiModel: 'AI 模型',
+            svgMcpProtocol: 'MCP 协议',
+            svgAutoCall: '自动调用'
         },
         en: {
             // Navigation
@@ -1521,7 +1528,21 @@
             themeBlue: 'Ocean Blue',
             themeGreen: 'Nature Green',
             themeOrange: 'Vibrant Orange',
-            themePink: 'Romantic Pink'
+            themePink: 'Romantic Pink',
+            
+            // SVG Animation Text
+            svgHttpApi: 'HTTP API',
+            svgGetUsers: 'GET /api/users',
+            svgPostData: 'POST /api/data',
+            svgConfigure: 'Configure',
+            svgMcpAdapter: 'MCP Adapter',
+            svgProtocolConversion: '✓ Protocol Conversion',
+            svgParamValidation: '✓ Parameter Validation',
+            svgTypeMapping: '✓ Type Mapping',
+            svgExpose: 'Expose',
+            svgAiModel: 'AI Model',
+            svgMcpProtocol: 'MCP Protocol',
+            svgAutoCall: 'Auto Call'
         }
     };
 
